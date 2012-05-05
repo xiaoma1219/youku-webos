@@ -1,0 +1,15 @@
+[	
+	{
+		"source": "javascript/profile.js"
+	},
+	{
+		"source": "javascript/layout.js"
+	},
+	{
+		"source": "javascript/mainlayout.js"
+	},
+	{
+		"scenes": "main" ,
+		"source": "app/assistants/main-assistant.js"
+	}
+]

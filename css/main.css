@@ -1,0 +1,40 @@
+.main_header
+{
+
+}
+.nev_bar_320
+{
+	position:fixed;
+	bottom:0px;
+	height:32px;
+	width:100%;
+	overflow:hidden;
+	background:rgba(125,125,125,178);
+	padding-left:6px;
+}
+.nev_bar_320 .nev_item
+{
+	position:relative;
+	float:left;
+	height:inherit;
+	text-align:center;
+	margin:0 2px;
+	padding:0 5px;
+}
+
+.nev_bar_320 .nev_item img
+{
+	position:relative;
+	top:0;
+	height:24px;
+	width:24px;
+}
+.nev_bar_320 .nev_item .title
+{
+	position:relative;
+	top:-8px;
+	height:10px;
+	line-height:10px;
+	font-size:10px;
+	color:white;
+}

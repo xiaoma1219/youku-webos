@@ -1,0 +1,10 @@
+{
+	"id": "com.youku.webos",
+	"version": "2.0.1",
+	"vendor": "xiaoma",
+	"type": "web",
+	"main": "index.html",
+	"title": "youku",
+	"icon": "icon.png",
+	"uiRevision": 2
+}

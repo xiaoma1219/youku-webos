@@ -1,0 +1,23 @@
+<HTML>
+	<HEAD>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<TITLE>test the youku api</TITLE>
+	<script type="text/javascript" src="profile.js"></script>
+	<script type="text/javascript">
+		function result(){
+			data = eval("'" + document.getElementById("source").value + "'");
+			document.getElementById("LOG").innerHTML = data;
+		}
+		
+	</script>
+	</HEAD>
+	<BODY>
+		<textarea id="source" style="margin:auto; width:900px; height:200px; display:block; overflow:hidden;"></textarea>
+		<br />
+		<input type="button" style="position:relative; left:900px;" onclick="result()" value="确定" />
+		<br />
+		<div id="LOG" style="margin:auto; width:900px; height:200px; display:block; overflow:hidden;">
+		</div>
+		
+	</BODY>
+</HTML>

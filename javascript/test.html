@@ -1,0 +1,29 @@
+<HTML>
+	<HEAD>
+	<TITLE>test the youku api</TITLE>
+	<script type="text/javascript" src="profile.js"></script>
+	<script type="text/javascript">
+		function result(data){
+			document.getElementById("LOG").innerHTML = data;
+		}
+		window.onload = function(){
+			request(getShowFilter("movie","area"), {success:result});
+			//{id:"LOG", height:"100px" }
+			//{margin:"auto", width:"900px", height:"auto", display:"block",overflow:"hidden"}
+			/*create_element("div",{
+				attributes : "id=LOG height=100px" , 
+				css : "margin:auto; width:900px; height:auto; display:block; overflow:hidden;",
+				parent : document.body
+				});
+				*/
+			//body_container();
+		}
+	</script>
+	</HEAD>
+	<BODY>
+		
+		<div id="LOG" style="margin:auto; width:900px; height:auto; display:block; overflow:hidden;">
+		</div>
+		
+	</BODY>
+</HTML>
