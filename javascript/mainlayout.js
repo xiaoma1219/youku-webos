@@ -365,7 +365,7 @@ var VideoList = Class.create({
 		});
 		create_element("div", {
 			"attributes" : {"class" : "rating"},
-			"css" : {"width" : data["reputation"] * 5.6 + "px"},
+			"css" : {"width" : data["reputation"] * 5.5 + "px"},
 			"parent" : rating
 		});
 		
@@ -422,13 +422,19 @@ var VideoList = Class.create({
 								"class" : "video_item",
 								"videoid" : data["videoid"],
 								},
-				"css" : {"height" : layoutOptions.video_item_height + "px"},
+				"css" : {
+						"height" : layoutOptions.video_item_height + "px",
+						"width" : layoutOptions.video_item_width  + "px"
+						},
 				"parent" : this.element
 			});
 			
 			var itemImg = create_element("img", {
 				"attributes" : {
 								"src" : configOptions.use_hd?data["img_hd"]:data["img"]
+								},
+				"css"		: {
+								"height" : 	336/448*layoutOptions.video_item_width + "px"			
 								},
 				"parent" : listItem
 			});
@@ -439,34 +445,47 @@ var VideoList = Class.create({
 								},
 				"parent" : listItem
 			});
-			
 			var title = create_element("div" ,{
 				"attributes" : {
 								"class" : "title"
 								},
 				"parent" : info
-			});
+			});			
 			title.innerHTML = data["title"];
-			
-			var play_times = create_element("div" ,{
-				"attributes" : {
-								"class" : "play_times"
-								},
-				"parent" : info
-			});
-			play_times.innerHTML = data["total_pv"];
-			
-			var totaltime = document.createElement("div");
 			
 			var total_time = create_element("div" ,{
 				"attributes" : {
 								"class" : "total_time"
 								},
 				"parent" : info
-			});
+			});			
 			total_time.innerHTML = data["duration"];
 			
-			Mojo.Event.listen(listItem,Mojo.Event.tap, this.click);
+			var rating_empty = create_element("div" ,{
+				"attributes" : {
+								"class" : "rating_empty"
+								},
+				"parent" : info
+			});
+			create_element("div" ,{
+				"attributes" : {
+								"class" : "rating"
+								},
+				"css" : {
+							"width" : data["reputation"] * 5.5 + "px"
+						},
+				"parent" : rating_empty
+			});
+			
+			var detail_btn = create_element("img" ,{
+				"attributes" : {
+								"class" : "detail_btn",
+								"src" : "images/detail_bar.png"
+								},
+				"parent" : info
+			});
+			
+			Mojo.Event.listen(listItem,Mojo.Event.tap, this.play);
 		}
 	},
 	click : function(parent){
@@ -479,6 +498,9 @@ var VideoList = Class.create({
 		this.style.background = "-webkit-gradient(linear, 0 0, 0 bottom, from(#666666), to(#333333))";
 		this.style.color = "white";
 		parent.last_clicked = this;
+	},
+	play : function(){
+		Mojo.Controller.stageController.pushScene({'name': 'player', 'sceneTemplate': 'player/player-scene'},this.getAttribute("videoid"));
 	},
 	clear : function(){
 		Mojo.Event.stopListening(item, Mojo.Event.tap, this.click);
