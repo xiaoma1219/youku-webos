@@ -1,27 +1,20 @@
 var debug = false;
-debug = true;
-var isApiProxy=true;
-function log(p) {
-	if(debug) {
-		//console.log(p);
-		Mojo.Log.info(p);
-	}
+//debug = true;
+var isApiProxy=false;
 
-}
+isApiProxy=true;
+
 //ob 排序方式
 
 function urlencode(str) {
 	str = (str + '').toString();
-
 	return encodeURIComponent(str).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/\*/g, '%2A').replace(/%20/g, '+');
 }
 
 function getApiProxyUrl(api) {
-	console.log(api);
 	if(isApiProxy) {
 		api = static_hp + "?api=" + encodeURIComponent(api);
 	}
-
 	return api;
 
 }
@@ -30,7 +23,7 @@ function getApiProxyUrl(api) {
  *	add by xiaoma
  *	http request function
 */
-function request(url, callbacks){
+function request(url, callbacks, quite){
 	var xmlhttp = new XMLHttpRequest();
 	if(!xmlhttp)
 		return false;
@@ -39,14 +32,20 @@ function request(url, callbacks){
 			//document.write(xmlhttp.responseText);
 			if(callbacks && callbacks.success){
 				callbacks.success(xmlhttp.responseText);
-			}				
+			}
+			if(callbacks.finish)
+				callbacks.finish();
 		}
 		else if (xmlhttp.readyState == 4 && xmlhttp.status != 200){
 			if(callbacks && callbacks.fail){
 				callbacks.fail();
 			}				
+			if(callbacks.finish)
+				callbacks.finish();
+			if(!quite)
+				Mojo.Controller.errorDialog("网络连接失败。"); 
 		}
-		else if(xmlhttp.readyState < 4){
+		else if(xmlhttp.readyState == 1){
 			if(callbacks && callbacks.load){
 				callbacks.load();
 			}
