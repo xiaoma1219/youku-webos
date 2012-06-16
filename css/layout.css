@@ -1,0 +1,41 @@
+.radio_group
+{
+	white-space: nowrap;
+	cursor: pointer;
+	margin: 3px 0;
+}
+.radio_button
+{
+	text-align: center;
+	-webkit-box-sizing: border-box;
+	font-size: 13px;
+	border-width: 0px 17px;
+	padding: 7px 0 8px 0;
+}
+
+.radio_button.first {
+	-webkit-border-image: url(../images/radiobutton.png) 0 17 556 17;
+}
+.radio_button.first.down {
+	-webkit-border-image: url(../images/radiobutton.png) 37 17 519 17;
+}
+
+.radio_button.middle {
+	-webkit-border-image: url(../images/radiobutton.png) 74 17 482 17;
+}
+.radio_button.middle.down {
+	-webkit-border-image: url(../images/radiobutton.png) 111 17 445 17;
+}
+
+.radio_button.last {
+	-webkit-border-image: url(../images/radiobutton.png) 148 17 408 17;
+}
+.radio_button.last.down {
+	-webkit-border-image: url(../images/radiobutton.png) 185 17 371 17;
+}
+
+.scroll
+{
+	position: relative;
+	height:inherit;
+}
